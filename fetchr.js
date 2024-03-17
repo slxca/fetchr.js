@@ -2,7 +2,7 @@ const axios = require('axios');
 const yaml = require('js-yaml');
 const fs = require('fs');
 
-class oRequest {
+class fetchr {
     constructor(configPath = ".o") {
         const config = yaml.safeLoad(fs.readFileSync(configPath, 'utf8'));
         this.url = config.config.url;
@@ -43,3 +43,5 @@ class oRequest {
         return functions;
     }
 }
+
+module.exports = fetchr;
