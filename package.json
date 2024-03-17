@@ -1,5 +1,5 @@
 {
-  "name": "fetchr",
+  "name": "orequest",
   "version": "1.0.0",
   "description": "Simplify HTTP Requests",
   "main": "index.js",
@@ -8,9 +8,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slxca/fetchr.git"
+    "url": "git+https://github.com/slxca/oRequest.git"
   },
-  "keywords": ["request", "http", "client", "api", "backend", "rest", "rest-api", "builder"],
+  "keywords": [
+    "request",
+    "http",
+    "client",
+    "api",
+    "backend",
+    "rest",
+    "rest-api",
+    "builder"
+  ],
   "author": "sluca",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "fs": "^0.0.1-security",
+    "js-yaml": "^4.1.0",
+    "url": "^0.11.3"
+  }
 }

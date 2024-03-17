@@ -1,5 +1,3 @@
-function getStarted() {
-    return "Get Started"
-}
+const oRequest = require("oRequest")
 
-module.exports = getStarted();
+module.exports = oRequest;
