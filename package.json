@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+"
+    "url": "git+https://github.com/slxca/fetchr.git"
   },
   "keywords": ["request", "http", "client", "api", "backend", "rest", "rest-api", "builder"],
   "author": "sluca",
