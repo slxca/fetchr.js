@@ -6,8 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+"
+  },
   "keywords": ["request", "http", "client", "api", "backend", "rest", "rest-api", "builder"],
   "author": "sluca",
-  "license": "Apache License"
+  "license": "MIT"
 }
