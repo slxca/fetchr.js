@@ -17,3 +17,5 @@ class fetchr {
         }
     }
 }
+
+export { fetchr };
