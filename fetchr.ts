@@ -1,5 +1,5 @@
 
-export default class fetchr {
+class fetchr {
 
     func: any = {}
 
