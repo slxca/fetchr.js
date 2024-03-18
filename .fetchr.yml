@@ -1,0 +1,11 @@
+config:
+  url: "https://api.upronix.com"
+
+routes:
+  getUser(userId, sessionToken):
+    endpoint: "/users/{userId}",
+    method: "GET"
+    header: {
+              "Authorization": "Bearer {sessionToken}",
+              "Content-Type": "application/json"
+    }

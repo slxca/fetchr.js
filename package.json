@@ -2,7 +2,7 @@
   "name": "@slxca/fetchr",
   "version": "0.2.0-test",
   "description": "Simplify HTTP Requests",
-  "main": "fetchr.js",
+  "main": "fetchr.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,5 +26,9 @@
     "axios": "^1.6.8",
     "fs": "^0.0.1-security",
     "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "typescript": "^5.4.2"
   }
 }
