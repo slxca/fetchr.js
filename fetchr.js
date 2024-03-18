@@ -3,44 +3,21 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 
 class fetchr {
-    constructor(configPath = ".o") {
-        const config = yaml.safeLoad(fs.readFileSync(configPath, 'utf8'));
-        this.url = config.config.url;
-        this.models = config.models;
 
-        // Bind model methods
-        for (const modelName in this.models) {
-            const model = this.models[modelName];
-            this[modelName] = this._generateModelFunctions(modelName, model);
+    constructor() {
+        this.func = {};
+
+        const data = yaml.load(fs.readFileSync('fetchr.yml', 'utf8'));
+        for(const funcName in data.func) {
+            const funcData = data.func[funcName];
+            func[funcData] = this.dynamicFunction(funcData.return);
         }
     }
 
-    _generateModelFunctions(modelName, model) {
-        const functions = {};
-        functions.getAll = async () => {
-            const path = model.path ? `/${model.path}` : `/${modelName}`;
-            const url = `${this.url}${path}`;
-            try {
-                const response = await axios.get(url);
-                return response.data;
-            } catch (error) {
-                throw new Error(error.response.data);
-            }
-        };
-
-        if (model.userId) {
-            functions.get = async (userId) => {
-                const url = `${this.url}/${modelName}/${userId}`;
-                try {
-                    const response = await axios.get(url);
-                    return response.data;
-                } catch (error) {
-                    throw new Error(error.response.data);
-                }
-            };
+    dynamicFunction(returnValue) {
+        return function() {
+            return returnValue;
         }
-
-        return functions;
     }
 }
 
