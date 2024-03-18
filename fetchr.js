@@ -10,7 +10,7 @@ class fetchr {
         const data = yaml.load(fs.readFileSync('fetchr.yml', 'utf8'));
         for(const funcName in data.func) {
             const funcData = data.func[funcName];
-            func[funcData] = this.dynamicFunction(funcData.return);
+            this.func[funcData] = this.dynamicFunction(funcData.return);
         }
     }
 
