@@ -1,19 +1,19 @@
-import axios from "axios";
-import yaml from "js-yaml";
-import fs from "fs";
 
-class fetchr {
+export default class fetchr {
 
-    func = {}
+    func: any = {}
 
-    constructor() {
-
-        const data = yaml.load(fs.readFileSync('.fetchr.yml', 'utf8'));
+    public fetchr() {
+        this.func["test"] = this.dynamicFunction("HelloWrld")
     }
 
-    dynamicFunction(...data: any) {
-        return function(hello: any) {
-            return "returnValue";
+    public routes() {
+        return this.func;
+    }
+
+    private dynamicFunction(...data: any) {
+        return function(hello: string = "") {
+            return data + hello;
         }
     }
 }
