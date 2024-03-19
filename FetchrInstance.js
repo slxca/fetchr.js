@@ -12,7 +12,14 @@ class FetchrInstance {
     constructor(filePath = "fetchr.yml") {
         this.filePath = filePath;
         this.file = fs.readFileSync(filePath, "utf8");
-        this.cfg = yaml.load(this.file);
+
+        try {
+            this.cfg = yaml.load(this.file);
+        } catch (e) {
+            console.error(e);
+            console.error("Error while loading config file. Read https://s-luca.com/fetchr/docs#config")
+        }
+
         this.api = axios.create({ baseURL: this.cfg.config.baseURL })
     }
 
@@ -21,10 +28,13 @@ class FetchrInstance {
             const routeConfig = this.cfg.routes[routeName];
 
             obj[routeName] = async (...args) => {
-                let url = routeConfig.endpoint;
-                routeConfig.params.forEach((param, index) => {
-                    url = url.replace(`{${param}}`, args[index]);
-                });
+                let url = routeConfig.endpoint
+
+                if(routeConfig.params !== undefined) {
+                    routeConfig.params.forEach((param, index) => {
+                        url = url.replace(`{${param}}`, args[index]);
+                    });
+                }
 
                 if(this.api === undefined) return;
 
