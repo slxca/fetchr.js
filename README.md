@@ -14,3 +14,5 @@ npm install @slxca/fetchr
 // Soon
 ```
 
+## Deploys
+[![GitHub Package Deploy](https://github.com/slxca/fetchr/actions/workflows/npm-publish-github-packages.yml/badge.svg)](https://github.com/slxca/fetchr/actions/workflows/npm-publish-github-packages.yml)
