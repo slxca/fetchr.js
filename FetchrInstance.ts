@@ -2,14 +2,14 @@ import fs from "fs-extra";
 import axios, {AxiosInstance} from "axios";
 import yaml from 'js-yaml';
 
-class fetchr {
+class FetchrInstance {
 
     private api: AxiosInstance | undefined;
     private filePath: string | undefined;
     private file: any;
     private cfg: any;
 
-    public fetchr(filePath: string = "fetchr.yml") {
+    public constructor(filePath: string = "fetchr.yml") {
         this.filePath = filePath;
         this.file = fs.readFileSync(filePath, "utf8");
         this.cfg = yaml.load(this.file);
@@ -41,4 +41,4 @@ class fetchr {
     }
 }
 
-export { fetchr };
+export { FetchrInstance };
