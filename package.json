@@ -1,6 +1,6 @@
 {
   "name": "@slxca/fetchr",
-  "version": "0.3.6-test",
+  "version": "0.4.0-beta",
   "description": "Simplify HTTP Requests",
   "main": "FetchrInstance.js",
   "repository": {
