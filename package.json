@@ -1,8 +1,8 @@
 {
   "name": "@slxca/fetchr",
-  "version": "0.3.1-test",
+  "version": "0.3.2-test",
   "description": "Simplify HTTP Requests",
-  "main": "FetchrInstance.ts",
+  "main": "FetchrInstance.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
