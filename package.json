@@ -1,6 +1,6 @@
 {
   "name": "@slxca/fetchr",
-  "version": "0.3.2-test",
+  "version": "0.3.3-test",
   "description": "Simplify HTTP Requests",
   "main": "FetchrInstance.js",
   "scripts": {
@@ -29,7 +29,6 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
-    "@types/js-yaml": "^4.0.9",
-    "typescript": "^5.4.2"
+    "@types/js-yaml": "^4.0.9"
   }
 }

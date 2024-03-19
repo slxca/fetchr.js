@@ -41,4 +41,6 @@ class FetchrInstance {
     }
 }
 
-export { FetchrInstance };
+module.exports = {
+    FetchrInstance
+}
