@@ -1,9 +1,9 @@
 const axios = require("axios");
 const yaml = require("js-yaml");
 const fs = require("fs-extra");
+const {FetchrBuilder} = require("./lib/FetchrBuilder");
 
 class FetchrInstance {
-
     api;
     filePath;
     file;
@@ -24,11 +24,14 @@ class FetchrInstance {
     }
 
     routes() {
-        return Object.keys(this.cfg.routes).reduce((obj, routeName) => {
+        const routeList = {};
+
+        // The reduce function should operate on routeList, not on a new empty object
+        Object.keys(this.cfg.routes).reduce((routeList, routeName) => {
             const routeConfig = this.cfg.routes[routeName];
 
-            obj[routeName] = async (...args) => {
-                let url = routeConfig.endpoint
+            routeList[routeName] = async (...args) => {
+                let url = routeConfig.endpoint;
 
                 if(routeConfig.params !== undefined) {
                     routeConfig.params.forEach((param, index) => {
@@ -38,16 +41,25 @@ class FetchrInstance {
 
                 if(this.api === undefined) return;
 
-                const result = await this.api({
-                    method: routeConfig.method,
-                    url: url
-                });
+                const builder = new FetchrBuilder()
+                    .setUrl(this.cfg.config.baseURL + url)
+                    .setBody(routeConfig.body ?? null)
+                    .setCache(routeConfig.cache ?? "no-cache")
+                    .setCredentials(routeConfig.credentials ?? "same-origin")
+                    .setHeaders(routeConfig.headers ?? {})
+                    .setMode(routeConfig.mode ?? "cors")
+                    .setRedirect(routeConfig.redirect ?? "follow")
+                    .setReferrerPolicy(routeConfig.referrerPolicy ?? "no-referrer")
+                    .setMethod(routeConfig.method ?? "GET")
+                    .build();
 
-                return result.data;
+                return await builder.send();
             };
 
-            return obj;
-        }, {});
+            return routeList;
+        }, routeList);
+
+        return routeList;
     }
 }
 
