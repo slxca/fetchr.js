@@ -39,14 +39,43 @@ class FetchrInstance {
                     .setBody(routeConfig.body ?? null)
                     .setCache(routeConfig.cache ?? "no-cache")
                     .setCredentials(routeConfig.credentials ?? "same-origin")
-                    .setHeaders(routeConfig.headers ?? {})
+                    .setHeaders({...this.cfg.defaultHeaders || {}, ...routeConfig.headers || {}} ?? {})
                     .setMode(routeConfig.mode ?? "cors")
                     .setRedirect(routeConfig.redirect ?? "follow")
                     .setReferrerPolicy(routeConfig.referrerPolicy ?? "no-referrer")
                     .setMethod(routeConfig.method ?? "GET")
                     .build();
 
-                return await builder.send();
+                try {
+                    const response = await builder.send();
+                    if(this.cfg.debug) console.log(response);
+                    return response;
+                } catch (e) {
+
+                    if(this.cfg.errors) console.error(e);
+
+                    switch(e.cause.code) {
+                        case "ECONNREFUSED":
+                            console.error("[Fetchr] Connection refused. Check your internet connection and the server status.");
+                            break;
+                        case "ENOTFOUND":
+                            console.error("[Fetchr] Host not found. Check the URL and try again.");
+                            break;
+                        case "ECONNRESET":
+                            console.error("[Fetchr] Connection reset. Check your internet connection and the server status.");
+                            break;
+                        case "ECONNABORTED":
+                            console.error("[Fetchr] Connection aborted. Check your internet connection and the server status.");
+                            break;
+                        case "ETIMEDOUT":
+                            console.error("[Fetchr] Connection timed out. Check your internet connection and the server status.");
+                            break;
+                        default:
+                            console.error(e);
+                            console.error("[Fetchr] Error while sending request. Read https://s-luca.com/fetchr/docs#request")
+                            break;
+                    }
+                }
             };
 
             return routeList;
