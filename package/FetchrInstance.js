@@ -30,6 +30,7 @@ class FetchrInstance {
 
                 if(routeConfig.params !== undefined) {
                     routeConfig.params.forEach((param, index) => {
+                        console.log(param, index, args[index])
                         url = url.replace(`{${param}}`, args[index]);
                     });
                 }
@@ -48,11 +49,11 @@ class FetchrInstance {
 
                 try {
                     const response = await builder.send();
-                    if(this.cfg.debug) console.log(response);
+                    if(this.cfg.config.debug) console.log(response);
                     return response;
                 } catch (e) {
 
-                    if(this.cfg.errors) console.error(e);
+                    if(this.cfg.config.errors) console.error(e);
 
                     switch(e.cause.code) {
                         case "ECONNREFUSED":
