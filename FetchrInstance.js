@@ -46,12 +46,7 @@ class FetchrInstance {
                     .setMethod(routeConfig.method ?? "GET")
                     .build();
 
-                try {
-                    return await builder.send();
-                } catch (e) {
-                    console.error(e);
-                    console.error("Error while sending request. Read https://s-luca.com/fetchr/docs#request")
-                }
+                return await builder.send();
             };
 
             return routeList;
