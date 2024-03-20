@@ -5,9 +5,9 @@
   "main": "FetchrInstance.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slxca/fetchr.git"
+    "url": "git+https://github.com/slxca/fetchr.js.git"
   },
-  "homepage": "https://github.com/slxca/fetchr.git",
+  "homepage": "https://github.com/slxca/fetchr.js",
   "keywords": [
     "request",
     "http",
