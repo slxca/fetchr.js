@@ -1,10 +1,7 @@
-const axios = require("axios");
+const {FetchrBuilder} = require("./lib/FetchrBuilder");
 const yaml = require("js-yaml");
 const fs = require("fs-extra");
-const {FetchrBuilder} = require("./lib/FetchrBuilder");
-
 class FetchrInstance {
-    api;
     filePath;
     file;
     cfg;
@@ -19,8 +16,6 @@ class FetchrInstance {
             console.error(e);
             console.error("Error while loading config file. Read https://s-luca.com/fetchr/docs#config")
         }
-
-        this.api = axios.create({ baseURL: this.cfg.config.baseURL })
     }
 
     routes() {
@@ -39,8 +34,6 @@ class FetchrInstance {
                     });
                 }
 
-                if(this.api === undefined) return;
-
                 const builder = new FetchrBuilder()
                     .setUrl(this.cfg.config.baseURL + url)
                     .setBody(routeConfig.body ?? null)
@@ -53,7 +46,12 @@ class FetchrInstance {
                     .setMethod(routeConfig.method ?? "GET")
                     .build();
 
-                return await builder.send();
+                try {
+                    return await builder.send();
+                } catch (e) {
+                    console.error(e);
+                    console.error("Error while sending request. Read https://s-luca.com/fetchr/docs#request")
+                }
             };
 
             return routeList;
