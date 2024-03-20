@@ -1,7 +1,5 @@
 name: GitHub Package Deploy
-on:
-  release:
-    types: [created]
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
