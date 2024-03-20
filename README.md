@@ -15,5 +15,5 @@ npm install @slxca/fetchr
 ```
 
 ## Deploys
-[![GitHub Package Deploy](https://github.com/slxca/fetchr/actions/workflows/npm-publish-github-packages.yml/badge.svg)](https://github.com/slxca/fetchr/actions/workflows/npm-publish-github-packages.yml)
-[![Node.js Package Deploy](https://github.com/slxca/fetchr/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/slxca/fetchr/actions/workflows/npm-publish.yml)
+[![GitHub Package Deploy](https://github.com/slxca/fetchr/actions/workflows/github-package-deploy.yml/badge.svg)](https://github.com/slxca/fetchr/actions/workflows/npm-package-deploy.yml)
+[![NPM Package Deploy](https://github.com/slxca/fetchr/actions/workflows/npm-package-deploy.yml/badge.svg)](https://github.com/slxca/fetchr/actions/workflows/npm-package-deploy.yml)
