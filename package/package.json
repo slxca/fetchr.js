@@ -1,5 +1,5 @@
 {
-  "name": "@slxca/fetchr",
+  "name": "fetchr.js",
   "version": "1.0.0-beta",
   "description": "Simplify HTTP Requests",
   "main": "FetchrInstance.js",
@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/slxca/fetchr.git"
   },
-  "homepage": "https://s-luca.com/fetchr",
+  "homepage": "https://github.com/slxca/fetchr.git",
   "keywords": [
     "request",
     "http",
