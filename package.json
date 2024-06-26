@@ -5,11 +5,15 @@
     "main": "dist/index.js",
     "module": "dist/index.mjs",
     "types": "dist/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "build": "tsup src/index.ts --format cjs,esm --dts",
         "release": "npm run build && changeset publish",
         "lint": "tsc"
     },
+
     "devDependencies": {
         "@changesets/cli": "^2.27.6",
         "typescript": "^5.5.2"
