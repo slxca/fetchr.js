@@ -1,0 +1,19 @@
+{
+    "name": "fetcht.js",
+    "license": "MIT",
+    "version": "0.0.1",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsup src/index.ts --format cjs,esm --dts",
+        "lint": "tsc"
+    },
+    "devDependencies": {
+        "@changesets/cli": "^2.27.6",
+        "typescript": "^5.5.2"
+    },
+    "dependencies": {
+        "tsup": "^8.1.0"
+    }
+}
