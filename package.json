@@ -2,20 +2,35 @@
     "name": "fetchr.js",
     "license": "MIT",
     "version": "0.0.1",
-    "main": "dist/index.js",
-    "module": "dist/index.mjs",
-    "types": "dist/index.d.ts",
+    "description": "",
+    "repository": "github:slxca/fetchr.js",
+    "author": "slxca <contact@s-luca.com> (https://s-luca.com)",
+    "funding": "https://github.com/sponsors/slxca",
+    "homepage": "https://fetchr.js.org",
+    "files": [
+        "dist"
+    ],
+    "bin": {
+        "fetchr": "dist/cli/index.js"
+    },
+    "bugs": {
+        "url": "https://github.com/slxca/fetchr.js/issues",
+        "email": "bugs@s-luca.com"
+    },
     "publishConfig": {
         "access": "public"
     },
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
     "scripts": {
-        "build": "tsup src/index.ts --format cjs,esm --dts",
+        "build": "tsup src/** --format cjs,esm --dts",
         "release": "npm run build && changeset publish",
         "lint": "tsc"
     },
-
     "devDependencies": {
         "@changesets/cli": "^2.27.6",
+        "@clack/prompts": "^0.7.0",
         "typescript": "^5.5.2"
     },
     "dependencies": {
